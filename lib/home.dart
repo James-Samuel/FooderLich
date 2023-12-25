@@ -9,6 +9,25 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   // TODO: Add state variables and functions
+//  **********************
+  //Before you can let the user switch between tab bar items, you need to know which index they selected
+  int _selectedIndex = 0;
+  static List<Widget> pages = <Widget>[
+    // TODO: Replace with Card1
+    Container(color: Colors.red),
+    // TODO: Replace with Card2
+    Container(color: Colors.green),
+    // TODO: Replace with Card3
+    Container(color: Colors.blue)
+  ];
+// 9
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+  // **********************
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,21 +42,20 @@ class _HomeState extends State<Home> {
         ),
       ),
       // TODO: Show selected tab
-      body: Center(
-        child: Center(
-          child: Text('Let\'s get cooking ! ',
-              // 3
-              // ignore: deprecated_member_use
-              style: Theme.of(context).textTheme.headline1),
-        ),
-      ),
+
+      body:  pages[_selectedIndex],
+
 
       // ********************** NAVIGATION BAR *******
       // TODO: Add bottom navigation bar
-      //navigation bar
+      //navigation bar added
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
         // TODO: Set selected tab bar
+        // **********************
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+        // **********************
         // 6
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
