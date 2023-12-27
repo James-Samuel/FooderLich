@@ -26,7 +26,8 @@ class _HomeState extends State<Home> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-    });
+    }
+    );
   }
   // **********************
 
@@ -57,6 +58,9 @@ class _HomeState extends State<Home> {
 
         // TODO: Set selected tab bar
         // **********************
+        //indicate to the user which tab bar item they currently have selected.
+        //currentIndex will tell the bottom navigation bar which tab bar item to highlight.
+        // TODO: check how current index tells the bottom nav to highlight....?
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
         // **********************
